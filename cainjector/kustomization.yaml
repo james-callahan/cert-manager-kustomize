@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonLabels:
+  app.kubernetes.io/component: cainjector
+resources:
+  - deployment.yaml
+  - rbac.yaml
+  - serviceaccount.yaml
+images:
+  - name: quay.io/jetstack/cert-manager-cainjector
+    newTag: v1.10.1@sha256:b5657161d2c2f74ab292da4cbaba3923bc74112525f70c3d884fb3c6ef83c303

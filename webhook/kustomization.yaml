@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonLabels:
+  app.kubernetes.io/component: webhook
+resources:
+  - deployment.yaml
+  - mutating-webhook.yaml
+  - rbac.yaml
+  - service.yaml
+  - serviceaccount.yaml
+  - validating-webhook.yaml
+configMapGenerator:
+  - name: cert-manager-webhook
+images:
+  - name: quay.io/jetstack/cert-manager-webhook
+    newTag: v1.10.1@sha256:64121721c6659e6790d7de527e8bc115ffc28b6e73e1b9a7f9aa11a90286fe25
