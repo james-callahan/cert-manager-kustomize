@@ -9,4 +9,4 @@ resources:
   - serviceaccount.yaml
 images:
   - name: quay.io/jetstack/cert-manager-controller
-    newTag: v1.10.1@sha256:1143471c90db621faee43ed53f250d0fcec9c86303ca83661c787d59486d2ff4
+    newTag: v1.11.0@sha256:d429b6d696e0ef47cff1d15241c6ffaac351e38ac22664b82fafa771d615b89a
