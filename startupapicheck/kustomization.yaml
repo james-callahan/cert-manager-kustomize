@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+commonLabels:
+  app.kubernetes.io/component: startupapicheck
+commonAnnotations:
+    helm.sh/hook: post-install
+    helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
+    helm.sh/hook-weight: "1"
+resources:
+  - job.yaml
+  - rbac.yaml
+  - serviceaccount.yaml
+images:
+  - name: quay.io/jetstack/cert-manager-ctl
+    newTag: v1.10.1@sha256:2840c4a9f0f3c4a4d35274cf02d75d417f95b0494251a43092400d96d974aa17
