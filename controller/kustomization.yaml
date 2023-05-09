@@ -7,6 +7,21 @@ resources:
   - rbac.yaml
   - service.yaml
   - serviceaccount.yaml
+patches:
+  - patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: cert-manager
+      spec:
+        template:
+          spec:
+            containers:
+              - name: cert-manager-controller
+                env:
+                  - name: CERT_MANAGER_ACME_HTTP01_SOLVER_IMAGE
+                    # renovate: datasource=docker
+                    value: quay.io/jetstack/cert-manager-acmesolver:v1.11.1@sha256:1d9116ec48d75da352866522e2c377405df9fde2cb5d8ad74b856817304ae101
 images:
   - name: quay.io/jetstack/cert-manager-controller
     newTag: v1.11.1@sha256:4f1782c8316f34aae6b9ab823c3e6b7e6e4d92ec5dac21de6a17c3da44c364f1
