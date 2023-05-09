@@ -8,4 +8,4 @@ resources:
   - serviceaccount.yaml
 images:
   - name: quay.io/jetstack/cert-manager-cainjector
-    newTag: v1.11.1@sha256:db61438c42ee2bcbde6a1243a1319cb01d22b904b6e4f1cd6d0e879befbc0e49
+    newTag: v1.11.2@sha256:bfef1087a9b66a860496967ef6e7bb7517a912262c79bdb43563bcd5ec247e4c
