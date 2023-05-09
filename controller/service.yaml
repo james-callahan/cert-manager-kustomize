@@ -7,5 +7,5 @@ spec:
   ports:
     - protocol: TCP
       port: 9402
-      name: tcp-prometheus-servicemonitor
+      name: http-metrics
       targetPort: 9402
