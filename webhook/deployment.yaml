@@ -6,6 +6,7 @@ spec:
   template:
     spec:
       serviceAccountName: cert-manager-webhook
+      enableServiceLinks: false
       securityContext:
         runAsNonRoot: true
         seccompProfile:
@@ -53,6 +54,7 @@ spec:
             capabilities:
               drop:
                 - ALL
+            readOnlyRootFilesystem: true
           env:
             - name: POD_NAMESPACE
               valueFrom:

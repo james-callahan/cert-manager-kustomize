@@ -6,6 +6,7 @@ spec:
   template:
     spec:
       serviceAccountName: cert-manager
+      enableServiceLinks: false
       securityContext:
         runAsNonRoot: true
         seccompProfile:
@@ -22,16 +23,33 @@ spec:
             - containerPort: 9402
               name: http-metrics
               protocol: TCP
+            - containerPort: 9403
+              name: http-healthz
+              protocol: TCP
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
               drop:
                 - ALL
+            readOnlyRootFilesystem: true
           env:
             - name: POD_NAMESPACE
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
             - name: CERT_MANAGER_ACME_HTTP01_SOLVER_IMAGE
+          # LivenessProbe settings are based on those used for the Kubernetes
+          # controller-manager. See:
+          # https://github.com/kubernetes/kubernetes/blob/806b30170c61a38fedd54cc9ede4cd6275a1ad3b/cmd/kubeadm/app/util/staticpod/utils.go#L241-L245
+          livenessProbe:
+            httpGet:
+              port: http-healthz
+              path: /livez
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 15
+            successThreshold: 1
+            failureThreshold: 8
       nodeSelector:
         kubernetes.io/os: linux

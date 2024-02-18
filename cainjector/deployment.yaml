@@ -6,6 +6,7 @@ spec:
   template:
     spec:
       serviceAccountName: cert-manager-cainjector
+      enableServiceLinks: false
       securityContext:
         runAsNonRoot: true
         seccompProfile:
@@ -26,5 +27,6 @@ spec:
             capabilities:
               drop:
                 - ALL
+            readOnlyRootFilesystem: true
       nodeSelector:
         kubernetes.io/os: linux
