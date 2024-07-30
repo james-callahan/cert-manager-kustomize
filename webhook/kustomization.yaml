@@ -13,4 +13,4 @@ configMapGenerator:
   - name: cert-manager-webhook
 images:
   - name: quay.io/jetstack/cert-manager-webhook
-    newTag: v1.15.1@sha256:88901bb0099b9cdade3950d37bfa97fce7fab0e5429d09fa941b8791add84a5f
+    newTag: v1.15.2@sha256:b1fcc42bfba229a6783911b0f6b845c14f568c830efd6d35c2b2b74e91a5d3a4
