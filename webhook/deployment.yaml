@@ -29,6 +29,9 @@ spec:
             - name: healthcheck
               protocol: TCP
               containerPort: 6080
+            - name: http-metrics
+              protocol: TCP
+              containerPort: 9402
           livenessProbe:
             httpGet:
               path: /livez

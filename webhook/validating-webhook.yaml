@@ -11,7 +11,7 @@ webhooks:
         - key: cert-manager.io/disable-validation
           operator: NotIn
           values:
-          - "true"
+            - "true"
     rules:
       - apiGroups:
           - cert-manager.io
