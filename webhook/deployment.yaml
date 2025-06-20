@@ -35,7 +35,7 @@ spec:
           livenessProbe:
             httpGet:
               path: /livez
-              port: 6080
+              port: healthcheck
               scheme: HTTP
             initialDelaySeconds: 60
             periodSeconds: 10
@@ -45,7 +45,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /healthz
-              port: 6080
+              port: healthcheck
               scheme: HTTP
             initialDelaySeconds: 5
             periodSeconds: 5
