@@ -1,0 +1,8 @@
+apiVersion: storage.k8s.io/v1
+kind: CSIDriver
+metadata:
+  name: csi.cert-manager.io
+spec:
+  podInfoOnMount: true
+  volumeLifecycleModes:
+    - Ephemeral
