@@ -95,12 +95,11 @@ rules:
     resources: [events]
     verbs: [create, patch]
 ---
-# HTTP01 Challenges controller role
 # Challenges controller role
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: cert-manager-http01-controller-challenges
+  name: cert-manager-controller-challenges
 rules:
   # Use to update challenge resource status
   - apiGroups: [acme.cert-manager.io]
@@ -122,12 +121,6 @@ rules:
   - apiGroups: [""]
     resources: [events]
     verbs: [create, patch]
-  # We require these rules to support users with the OwnerReferencesPermissionEnforcement
-  # admission controller enabled:
-  # https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#ownerreferencespermissionenforcement
-  - apiGroups: [ "acme.cert-manager.io" ]
-    resources: [ "challenges/finalizers" ]
-    verbs: [ "update" ]
   # HTTP01 rules
   - apiGroups: [""]
     resources: [pods, services]
@@ -144,33 +137,6 @@ rules:
   - apiGroups: [route.openshift.io]
     resources: [routes/custom-host]
     verbs: [create]
----
-# DNS01 Challenges controller role
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: cert-manager-dns01-controller-challenges
-rules:
-  # Use to update challenge resource status
-  - apiGroups: ["acme.cert-manager.io"]
-    resources: ["challenges", "challenges/status"]
-    verbs: ["update", "patch"]
-  # Used to watch challenge resources
-  - apiGroups: ["acme.cert-manager.io"]
-    resources: ["challenges"]
-    verbs: ["get", "list", "watch"]
-  # Used to watch challenges, issuer and clusterissuer resources
-  - apiGroups: ["cert-manager.io"]
-    resources: ["issuers", "clusterissuers"]
-    verbs: ["get", "list", "watch"]
-  # Need to be able to retrieve ACME account private key to complete challenges
-  - apiGroups: [""]
-    resources: ["secrets"]
-    verbs: ["get", "list", "watch"]
-  # Used to create events
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "patch"]
   # We require these rules to support users with the OwnerReferencesPermissionEnforcement
   # admission controller enabled:
   # https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#ownerreferencespermissionenforcement
@@ -331,23 +297,11 @@ subjects:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: cert-manager-controller-http01-challenges
+  name: cert-manager-controller-challenges
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: cert-manager-http01-controller-challenges
-subjects:
-  - name: cert-manager
-    kind: ServiceAccount
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: cert-manager-controller-dns01-challenges
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cert-manager-dns01-controller-challenges
+  name: cert-manager-controller-challenges
 subjects:
   - name: cert-manager
     kind: ServiceAccount
