@@ -2,4 +2,19 @@ commonLabels:
   - path: spec/selector/matchLabels
     create: true
     group: monitoring.coreos.com
+    kind: PodMonitor
+  - path: spec/selector/matchLabels
+    create: true
+    group: monitoring.coreos.com
     kind: ServiceMonitor
+
+nameReference:
+  - kind: Secret
+    version: v1
+    fieldSpecs:
+      - path: /spec/podMetricsEndpoints[]/basicAuth/username/name
+        kind: PodMonitor
+        group: monitoring.coreos.com
+      - path: /spec/podMetricsEndpoints[]/basicAuth/password/name
+        kind: PodMonitor
+        group: monitoring.coreos.com
