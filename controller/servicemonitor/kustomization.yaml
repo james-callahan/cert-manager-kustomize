@@ -3,6 +3,7 @@ kind: Kustomization
 configurations:
   - kustomizeconfig.yaml
 commonLabels:
+  app.kubernetes.io/name: cert-manager
   app.kubernetes.io/component: controller
 resources:
   - servicemonitor.yaml
