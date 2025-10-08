@@ -3,9 +3,9 @@ kind: Kustomization
 commonLabels:
   app.kubernetes.io/name: cert-manager
 resources:
-  - certificates.yaml
-  - certificaterequests.yaml
-  - challenges.yaml
-  - clusterissuers.yaml
-  - issuers.yaml
-  - orders.yaml
+  - acme.cert-manager.io_challenges.yaml
+  - acme.cert-manager.io_orders.yaml
+  - cert-manager.io_certificaterequests.yaml
+  - cert-manager.io_certificates.yaml
+  - cert-manager.io_clusterissuers.yaml
+  - cert-manager.io_issuers.yaml
