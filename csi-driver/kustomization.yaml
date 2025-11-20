@@ -13,6 +13,6 @@ images:
   - name: registry.k8s.io/sig-storage/csi-node-driver-registrar
     newTag: v2.14.0@sha256:5244abbe87e01b35adeb8bb13882a74785df0c0619f8325c9e950395c3f72a97
   - name: registry.k8s.io/sig-storage/livenessprobe
-    newTag: v2.16.0@sha256:88092d100909918ae0a768956cf78c88bc59cd7232720f7cdbdfb5d2e235001e
+    newTag: v2.17.0@sha256:9b75b9ade162136291d5e8f13a1dfc3dec71ee61419b1bfc112e0796ff8a6aa9
   - name: quay.io/jetstack/cert-manager-csi-driver
     newTag: v0.11.1@sha256:b0da81282978c5acf347e130b0b08f5917bd5750998b7971dbafa93a8190caff
