@@ -11,7 +11,7 @@ resources:
   - serviceaccount.yaml
 images:
   - name: registry.k8s.io/sig-storage/csi-node-driver-registrar
-    newTag: v2.14.0@sha256:5244abbe87e01b35adeb8bb13882a74785df0c0619f8325c9e950395c3f72a97
+    newTag: v2.15.0@sha256:11f199f6bec47403b03cb49c79a41f445884b213b382582a60710b8c6fdc316a
   - name: registry.k8s.io/sig-storage/livenessprobe
     newTag: v2.17.0@sha256:9b75b9ade162136291d5e8f13a1dfc3dec71ee61419b1bfc112e0796ff8a6aa9
   - name: quay.io/jetstack/cert-manager-csi-driver
