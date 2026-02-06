@@ -15,4 +15,4 @@ images:
   - name: registry.k8s.io/sig-storage/livenessprobe
     newTag: v2.17.0@sha256:9b75b9ade162136291d5e8f13a1dfc3dec71ee61419b1bfc112e0796ff8a6aa9
   - name: quay.io/jetstack/cert-manager-csi-driver
-    newTag: v0.11.1@sha256:b0da81282978c5acf347e130b0b08f5917bd5750998b7971dbafa93a8190caff
+    newTag: v0.12.0@sha256:df7dcb0350ffd4f505762093e56586dec7dad453791f9425c0221b6ac5d859fc
