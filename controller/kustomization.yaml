@@ -22,7 +22,7 @@ patches:
                 env:
                   - name: CERT_MANAGER_ACME_HTTP01_SOLVER_IMAGE
                     # renovate: datasource=docker
-                    value: quay.io/jetstack/cert-manager-acmesolver:v1.19.4@sha256:7688c3e2d7e5338deb630da911fff3752c72a7bf70f94608c223f96af40c8399
+                    value: quay.io/jetstack/cert-manager-acmesolver:v1.20.0@sha256:5b8f5c747bf4b966eaa244260ac7c6b513871bc3b7c6e2c4a06c3b143d7c8a75
 images:
   - name: quay.io/jetstack/cert-manager-controller
-    newTag: v1.19.4@sha256:9cad8065bbf57815cbcfa813b903dd8822bcd0271f7443192082b54e96a55585
+    newTag: v1.20.0@sha256:b9009aa6b45b59da1363a26dab15aee7d77c7ce01ac2c1cf05ecd1121462db16
