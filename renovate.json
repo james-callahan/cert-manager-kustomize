@@ -6,7 +6,12 @@
   "packageRules": [
     {
       "matchDatasources": ["docker"],
-      "matchDepPatterns": ["^quay.io/jetstack/cert-manager.*"],
+      "matchPackageNames": [
+        "quay.io/jetstack/cert-manager-acmesolver",
+        "quay.io/jetstack/cert-manager-cainjector",
+        "quay.io/jetstack/cert-manager-controller",
+        "quay.io/jetstack/cert-manager-webhook"
+      ],
       "groupName": "cert-manager"
     }
   ],
