@@ -213,8 +213,11 @@ rules:
     resources: [certificates/status]
     verbs: [update]
   - apiGroups: [acme.cert-manager.io]
-    resources: [challenges, orders]
-    verbs: [create, delete, deletecollection, patch, update]
+    resources: [challenges]
+    verbs: [delete, deletecollection, patch, update]
+  - apiGroups: [acme.cert-manager.io]
+    resources: [orders]
+    verbs: [delete, deletecollection]
 ---
 # Permission to approve CertificateRequests referencing cert-manager.io Issuers and ClusterIssuers
 apiVersion: rbac.authorization.k8s.io/v1
