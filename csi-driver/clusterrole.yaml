@@ -3,12 +3,14 @@ kind: ClusterRole
 metadata:
   name: cert-manager-csi-driver
 rules:
-  - apiGroups: ["cert-manager.io"]
-    resources: ["certificaterequests"]
-    verbs: ["watch", "create", "delete", "list"]
-  # Required by --pod-readiness-gate to fetch the pod owning each volume and
+  - apiGroups: [cert-manager.io]
+    resources: [certificaterequests]
+    verbs: [watch, create, delete, list]
+  # Required by --pod-readiness-gate to read the pod owning each volume and
   # evaluate gate conditions (e.g. PodIPs, status conditions, annotations)
-  # before issuing a CertificateRequest.
+  # before issuing a CertificateRequest. The driver maintains a shared pod
+  # informer scoped to the local node, which requires list and watch in
+  # addition to get for cache reads.
   - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["get"]
+    resources: [pods]
+    verbs: [get, list, watch]
